@@ -1,0 +1,72 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        #container {
+            position: absolute;
+            left: 20px;
+            top: 48px;
+            height: 500px;
+            width: 500px;
+            border: 3px solid #CCC;
+            background-color: #FFF;
+        }
+        
+        .box {
+            float: left;
+            width: 75px;
+            height: 100px;
+            margin: 10px;
+            background: #FFF url('http://placekitten.com/g/75/100/') no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>hello world !</h1>
+    <div id="container">
+
+    </div>
+
+
+
+    <script>
+        var x;
+        for (x = 0; x < 20; x++) {
+            setTimeout(function() {
+
+                var box = document.createElement('div');
+                box.className = 'box';
+                document.getElementById('container').appendChild(box);
+
+
+            }, 500 * x);
+
+        }
+        // var a = document.querySelector(".hello");
+        // a.addEventListener('click', function() {
+        //     alert("we are inside the listener");
+
+        //     var h1 = document.querySelector("h1");
+        //     h1.innerHTML = "i am ok ";
+        //     console.log(h1);
+        // });
+
+        // function howManyLetters(x) {
+        //     var answer = x.length;
+        //     document.write(answer);
+        // }
+
+        // howManyLetters("Chris");
+
+        // // console.log(a);
+    </script>
+</body>
+
+
+</html>
