@@ -1,19 +1,15 @@
 // One Month JS
-// Course Link
+
 
 // Week 2 Homework
 // Finish the GIF search engine
 
 
 
-// 1. grab the input value
-
 document.querySelector(".js-go").addEventListener('click', function() {
 
     var input = document.querySelector("input").value;
-    pushToAPI(input);
-
-
+    pushtoapi(input);
 
 });
 
@@ -21,25 +17,21 @@ document.querySelector(".js-userinput").addEventListener('keyup', function(e) {
 
     var input = document.querySelector("input").value;
 
+    // if the key ENTER is pressed...
     if (e.which === 13) {
-        pushToAPI(input);
+        pushtoapi(input);
     }
 
 });
 
-
-
-// 2. do the data stuff with the API
-
-function pushToAPI(input) {
-
-    var url = "http://api.giphy.com/v1/gifs/search?q=" + input + "&api_key=dc6zaTOxFJmzC"
-
+/* 2. do the data stuff with the API */
+function pushtoapi(input) {
+    var url = "http://api.giphy.com/v1/gifs/search?q=" + input + "&api_key=dc6zaTOxFJmzC";
     console.log(url);
 
-    //AJAX Request
+    // AJAX Request
     var GiphyAJAXCall = new XMLHttpRequest();
-    GiphyAJAXCall.open('Get', url);
+    GiphyAJAXCall.open('GET', url);
     GiphyAJAXCall.send();
 
     GiphyAJAXCall.addEventListener('load', function(e) {
@@ -48,28 +40,31 @@ function pushToAPI(input) {
         pushToDOM(data);
 
     });
-
 }
 
 
 
-//3. return and show the GIFs
+
+
+/* 3. Show me the GIFs */
+
 
 function pushToDOM(data) {
-
     var container = document.querySelector(".js-container");
-
     var response = JSON.parse(data);
 
-    var imageUrls = response.data;
-
+    var src = response.data;
     container.innerHTML = "";
 
-    imageUrls.forEach(function(image) {
+    src.forEach(function(image) {
 
-        var gifUrl = image.images.fixed_height.url;
+        var srcs = image.images.fixed_height.url;
 
-        container.innerHTML += "<img src=\"" + gifUrl + "\" class=\"container-image\">";
+        // console.log(src);
+
+
+        container.innerHTML = container.innerHTML + "<img src=\"" + srcs + "\" class=\"container-image\">";
 
     });
+
 }
